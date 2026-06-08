@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.wordkids.controller.GameController"
+            style="-fx-background-color: linear-gradient(to bottom, #F9F7F7, #DBE2EF);">
+
+    <!-- TOP HUD -->
+    <top>
+
+        <HBox alignment="CENTER"
+              spacing="40"
+              style="-fx-padding: 20;">
+
+            <Label fx:id="scoreLabel"
+                   text="Score: 0"
+                   style="-fx-font-size: 20px;
+                          -fx-font-weight: bold;"/>
+
+            <Label fx:id="livesLabel"
+                   text="Lives: 3"
+                   style="-fx-font-size: 20px;
+                          -fx-font-weight: bold;"/>
+
+        </HBox>
+
+    </top>
+
+    <!-- CENTER GAME -->
+    <center>
+
+        <VBox alignment="CENTER"
+              spacing="25">
+
+            <ImageView fx:id="wordImage"
+                       fitWidth="200"
+                       fitHeight="200"/>
+
+            <Label fx:id="wordLabel"
+                   text="WORD"
+                   style="-fx-font-size: 32px;
+                          -fx-font-weight: bold;"/>
+
+            <VBox alignment="CENTER"
+                  spacing="15">
+
+                <Button fx:id="option1Button"
+                        text="OPTION 1"
+                        onAction="#handleOption1"
+                        style="
+            -fx-font-size: 20px;
+            -fx-background-color: #FFD93D;
+            -fx-background-radius: 15;
+            -fx-padding: 12 30 12 30;
+            -fx-font-weight: bold;
+        "/>
+
+                <Button fx:id="option2Button"
+                        text="OPTION 2"
+                        onAction="#handleOption2"
+                        style="
+            -fx-font-size: 20px;
+            -fx-background-color: #6BCB77;
+            -fx-background-radius: 15;
+            -fx-padding: 12 30 12 30;
+            -fx-font-weight: bold;
+        "/>
+
+                <Button fx:id="option3Button"
+                        text="OPTION 3"
+                        onAction="#handleOption3"
+                        style="
+            -fx-font-size: 20px;
+            -fx-background-color: #4D96FF;
+            -fx-background-radius: 15;
+            -fx-padding: 12 30 12 30;
+            -fx-font-weight: bold;
+        "/>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

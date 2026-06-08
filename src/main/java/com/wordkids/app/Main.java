@@ -1,0 +1,23 @@
+package com.wordkids.app;
+
+import com.wordkids.util.SceneManager;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage stage) {
+
+        SceneManager.setStage(stage);
+
+        SceneManager.switchScene("menu.fxml");
+
+        stage.setTitle("WordKids Adventure");
+
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
