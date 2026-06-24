@@ -1,4 +1,5 @@
 package com.wordkids.controller;
+import javafx.scene.control.ProgressBar;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,6 +22,9 @@ public class GameController {
     private Label livesLabel;
 
     @FXML
+    private ProgressBar progressBar;
+
+    @FXML
     private Label wordLabel;
 
     @FXML
@@ -37,6 +41,10 @@ public class GameController {
 
     private GameEngine gameEngine;
     private LessonManager lessonManager;
+
+    private int currentQuestionIndex = 0;
+
+    private final int totalQuestions = 5;
 
     @FXML
     private void handleOption1() {
@@ -63,7 +71,7 @@ public class GameController {
     @FXML
     public void initialize() {
 
-        lessonManager = new LessonManager();
+        lessonManager = LessonManager.getInstance();
 
         gameEngine = new GameEngine(
                 lessonManager
@@ -72,6 +80,8 @@ public class GameController {
         );
 
         loadCurrentWord();
+
+        updateProgressBar();
 
     }
 
@@ -109,48 +119,39 @@ public class GameController {
         );
 
         scoreLabel.setText(
-                "Score: " + gameEngine.getScore()
+                "Puntaje: " + gameEngine.getScore()
         );
 
         livesLabel.setText(
-                "Lives: " + gameEngine.getLives()
+                "Vidas: " + gameEngine.getLives()
         );
     }
 
     private void processAnswer(String answer) {
 
-        boolean isCorrect =
-                gameEngine.checkAnswer(answer);
+        boolean isCorrect = gameEngine.checkAnswer(answer);
+
+        // actualizar progreso SIEMPRE una vez por pregunta
+        currentQuestionIndex++;
+        updateProgressBar();
 
         if (!isCorrect) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-
-            alert.setTitle("Incorrect Answer");
-
+            alert.setTitle("Respuesta Incorrecta");
             alert.setHeaderText(null);
-
-            alert.setContentText(
-                    "Oops! Try the next word."
-            );
-
+            alert.setContentText("¡Ups! Prueba con la siguiente palabra.");
             alert.showAndWait();
-
         }
 
         if (gameEngine.isGameOver()) {
-
-            wordLabel.setText("GAME OVER");
-
+            wordLabel.setText("¡Te quedaste sin vidas!");
             disableButtons();
-
             return;
         }
 
         if (!gameEngine.hasNextWord()) {
-
             SceneManager.switchScene("victory.fxml");
-
             return;
         }
 
@@ -166,6 +167,32 @@ public class GameController {
 
         option3Button.setDisable(true);
 
+    }
+
+    private void updateProgressBar() {
+
+        double progress =
+                (double) currentQuestionIndex
+                        / totalQuestions;
+
+        progressBar.setProgress(progress);
+
+    }
+
+    @FXML
+    private void handleNextLesson() {
+
+        lessonManager.nextLesson();
+
+        gameEngine = new GameEngine(
+                lessonManager.getCurrentLesson().getWords()
+        );
+
+        currentQuestionIndex = 0;
+
+        updateProgressBar();
+
+        loadCurrentWord();
     }
 
 }

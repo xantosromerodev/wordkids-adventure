@@ -21,7 +21,7 @@ public class GameService {
 
         words.add(
                 new Word(
-                        "APPLE",
+                        "MANZANA",
                         "/images/apple.jpg",
                         List.of("APPLE", "DOG", "CAR"),
                         "APPLE"
@@ -30,7 +30,7 @@ public class GameService {
 
         words.add(
                 new Word(
-                        "DOG",
+                        "PERRO",
                         "/images/dog.jpg",
                         List.of("DOG", "BANANA", "HOUSE"),
                         "DOG"

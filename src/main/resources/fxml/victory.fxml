@@ -10,16 +10,16 @@
       spacing="30"
       style="-fx-background-color: #C7F9CC;">
 
-    <Label text="CONGRATULATIONS!"
+    <Label text="FELICIDADES!"
            style="
                -fx-font-size: 40px;
                -fx-font-weight: bold;
            "/>
 
-    <Label text="Lesson Completed!"
+    <Label text="Leccion completada!"
            style="-fx-font-size: 24px;"/>
 
-    <Button text="NEXT LESSON"
+    <Button text="SIGUIENTE LECCION"
             onAction="#handleNextLesson"
             style="
                 -fx-font-size: 22px;
@@ -29,7 +29,7 @@
                 -fx-font-weight: bold;
             "/>
 
-    <Button text="MAIN MENU"
+    <Button text="IR AL INICIO"
             onAction="#handleMainMenu"
             style="
             -fx-font-size: 20px;

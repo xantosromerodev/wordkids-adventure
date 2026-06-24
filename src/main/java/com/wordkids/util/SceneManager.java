@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 
 public class SceneManager {
 
+
+
     private static Stage primaryStage;
 
     public static void setStage(Stage stage) {

@@ -1,0 +1,10 @@
+com\wordkids\model\Word.class
+com\wordkids\controller\MenuController.class
+com\wordkids\controller\VictoryController.class
+com\wordkids\controller\GameController.class
+com\wordkids\service\GameEngine.class
+com\wordkids\service\GameService.class
+com\wordkids\model\Lesson.class
+com\wordkids\service\LessonManager.class
+com\wordkids\app\Main.class
+com\wordkids\util\SceneManager.class
